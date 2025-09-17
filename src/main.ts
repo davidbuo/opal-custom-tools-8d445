@@ -26,8 +26,8 @@ const toolsService = new ToolsService(app);
 // Import tools
 import "./tools/api-call";
 import "./tools/greeting";
-import "./tools/hi-conny";
 import "./tools/rick-roll";
+import "./tools/search-table";
 import "./tools/sqlite-query";
 import "./tools/todays-date";
 
