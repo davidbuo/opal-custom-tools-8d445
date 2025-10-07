@@ -25,6 +25,7 @@ const toolsService = new ToolsService(app);
 
 // Import tools
 import "./tools/search-table";
+import "./tools/web-analytics-report";
 
 // Export the Express app for serverless environments
 export { app };
