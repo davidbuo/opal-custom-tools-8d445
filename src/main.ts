@@ -26,6 +26,7 @@ const toolsService = new ToolsService(app);
 // Import tools
 import "./tools/search-table";
 import "./tools/web-analytics-report";
+import "./tools/db_create_cms_page";
 
 // Export the Express app for serverless environments
 export { app };
