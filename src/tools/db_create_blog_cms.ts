@@ -1,5 +1,6 @@
 import { tool, ParameterType } from "@optimizely-opal/opal-tools-sdk";
 import { OptimizelyApiClient } from "../utils/optimizely-cms-client";
+import { generatePreviewUrl, constructPageUrl } from "../utils/preview-url";
 
 interface CreateCmsPageParameters {
   title: string;
@@ -38,6 +39,14 @@ async function db_create_blog_cms(parameters: CreateCmsPageParameters) {
       }
     });
 
+    // Generate preview URL
+    const pageUrl = constructPageUrl(newPage.contentType!, newPage.routeSegment!);
+    const previewData = await generatePreviewUrl(
+      newPage.key!,
+      newPage.version!,
+      pageUrl
+    );
+
     return {
       success: true,
       contentKey: newPage.key,
@@ -47,7 +56,9 @@ async function db_create_blog_cms(parameters: CreateCmsPageParameters) {
       version: newPage.version,
       routeSegment: newPage.routeSegment,
       lastModified: newPage.lastModified,
-      message: `Successfully created blog page: "${title}"`,
+      previewUrl: previewData?.previewUrl || null,
+      previewToken: previewData?.token || null,
+      message: `Successfully created blog page: "${title}"${previewData ? ' with preview URL' : ''}`,
       properties: {
         title: newPage.properties?.Title,
         subtitle: newPage.properties?.Subtitle,
