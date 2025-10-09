@@ -9,7 +9,7 @@ interface CreateCmsPageParameters {
   container?: string;
 }
 
-async function db_create_cms_page(parameters: CreateCmsPageParameters) {
+async function db_create_blog_cms(parameters: CreateCmsPageParameters) {
   const { title, subtitle, body, author, container } = parameters;
 
   // Initialize the Optimizely CMS client
@@ -64,7 +64,7 @@ async function db_create_cms_page(parameters: CreateCmsPageParameters) {
 }
 
 tool({
-  name: "db_create_cms_page",
+  name: "db_create_blog_cms",
   description: "Creates a new blog page in the Optimizely CMS with the provided title, subtitle, and body content. The page will be created in draft status.",
   parameters: [
     {
@@ -98,4 +98,4 @@ tool({
       required: false,
     },
   ],
-})(db_create_cms_page);
+})(db_create_blog_cms);
