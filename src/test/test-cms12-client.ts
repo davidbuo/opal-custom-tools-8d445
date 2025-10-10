@@ -1,4 +1,4 @@
-import { OptimizelyCMS12Client } from './utils/optimizely-cms12-client';
+import { OptimizelyCMS12Client } from '../utils/optimizely-cms12-client';
 
 async function testCMS12Client() {
   console.log('=== Testing Optimizely CMS 12 Client ===\n');

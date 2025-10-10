@@ -1,5 +1,5 @@
 // Test the db_create_cms_page tool directly
-import { OptimizelyApiClient } from './utils/optimizely-cms-client';
+import { OptimizelyApiClient } from '../utils/optimizely-cms-client';
 
 async function testTool() {
   const client = new OptimizelyApiClient({

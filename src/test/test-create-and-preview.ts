@@ -1,4 +1,4 @@
-import { OptimizelyApiClient } from "./utils/optimizely-cms-client";
+import { OptimizelyApiClient } from "../utils/optimizely-cms-client";
 import { testPreviewUrl } from "./test-preview-url";
 
 const PREVIEW_TOKEN = 'OptiPreview123';
