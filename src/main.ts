@@ -24,7 +24,6 @@ app.use((req, res, next) => {
 const toolsService = new ToolsService(app);
 
 // Import tools
-import "./tools/api-call";
 import "./tools/web-analytics-report";
 import "./tools/db_create_blog_cms";
 import "./tools/db_cms12_create_blog";
