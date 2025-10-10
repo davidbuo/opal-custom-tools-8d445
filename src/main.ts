@@ -27,9 +27,11 @@ const toolsService = new ToolsService(app);
 import "./tools/search-table";
 import "./tools/web-analytics-report";
 import "./tools/db_create_blog_cms";
-import "./tools/db_create_blog_cms12";
+import "./tools/db_cms12_create_blog";
+import "./tools/db_cms12_update_page";
 import "./tools/db_create_cms_page";
 import "./tools/db_get_cms_page";
+import "./tools/db_cms12_get_page";
 
 // Export the Express app for serverless environments
 export { app };

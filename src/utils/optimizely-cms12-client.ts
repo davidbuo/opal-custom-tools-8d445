@@ -154,6 +154,61 @@ export class OptimizelyCMS12Client {
   }
 
   /**
+   * Search for content by title/name using OData filter
+   */
+  async searchContentByTitle(title: string, locale?: string): Promise<ContentItem[]> {
+    try {
+      const url = '/api/episerver/v3.0/search/content/';
+      const filter = `tolower(name) eq '${title.toLowerCase()}'`;
+      const params: any = { filter };
+
+      if (locale) {
+        params.language = locale;
+      }
+
+      // Note: Search API doesn't require authentication in this instance
+      const response = await this.axiosInstance.get<{ results: ContentItem[]; totalMatching: number }>(
+        url,
+        {
+          params,
+          headers: { 'Accept': 'application/json' }
+        }
+      );
+
+      return response.data.results || [];
+    } catch (error: any) {
+      throw new Error(`Failed to search content: ${error.message}`);
+    }
+  }
+
+  /**
+   * Search for content using contains filter (partial match)
+   */
+  async searchContentContains(searchTerm: string, locale?: string): Promise<ContentItem[]> {
+    try {
+      const url = '/api/episerver/v3.0/search/content/';
+      const filter = `contains(tolower(name), '${searchTerm.toLowerCase()}')`;
+      const params: any = { filter };
+
+      if (locale) {
+        params.language = locale;
+      }
+
+      const response = await this.axiosInstance.get<{ results: ContentItem[]; totalMatching: number }>(
+        url,
+        {
+          params,
+          headers: { 'Accept': 'application/json' }
+        }
+      );
+
+      return response.data.results || [];
+    } catch (error: any) {
+      throw new Error(`Failed to search content: ${error.message}`);
+    }
+  }
+
+  /**
    * Create new content
    */
   async createContent(payload: Partial<ContentItem>): Promise<ContentItem> {

@@ -8,7 +8,7 @@ interface CreateBlogCms12Parameters {
   author?: string;
 }
 
-async function db_create_blog_cms12(parameters: CreateBlogCms12Parameters) {
+async function db_cms12_create_blog(parameters: CreateBlogCms12Parameters) {
   const { title, teaserText, body, author } = parameters;
 
   // Initialize the Optimizely CMS 12 client
@@ -79,7 +79,7 @@ async function db_create_blog_cms12(parameters: CreateBlogCms12Parameters) {
 }
 
 tool({
-  name: "db_create_blog_cms12",
+  name: "db_cms12_create_blog",
   description: "Creates a new blog page (StandardPage) in Optimizely CMS 12 with the provided title, teaser text, and HTML body content. The page will be created under content ID 633 in CheckedOut status.",
   parameters: [
     {
@@ -107,4 +107,4 @@ tool({
       required: false,
     },
   ],
-})(db_create_blog_cms12);
+})(db_cms12_create_blog);
